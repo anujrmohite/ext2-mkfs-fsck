@@ -1,0 +1,68 @@
+##Overview of ext2:
+    
+    -ext2 fs uses blocks as the basic unit of storage, 
+    inodes as the mean of keeping track of files and system objects,
+    block groups to logically split the disk into more manageable sections
+    directories to provide hierarchical organisation of files,blocks and inodes
+    bitmaps to keep track of allocated blocks and inodes, and superblocks to 
+    define the parameters of the file-system and its overall state.
+
+##Blocks:
+    Partition/disk/file ->[ divided into small groups ]-> blocks
+    these blocks are grouped then -> block groups
+
+    the size of the blocks are usually determined when formatting the disk
+    and will have an impact on performance, maximum file size, and maximum
+    file system size. block size commonly impplemented include 1KiB, 2KiB, 
+    4KiB and 8KiB
+
+##Block Sizes::
+
+
+    Upper Limits                    1KiB                     2KiB                   4KiB                    8KiB
+    
+    file system blocks      2,147,483,647              2,147,483,647            2,147,483,647           2,147,483,647
+
+    blocks per block
+    group                       8,192                       16,384                  32,768                  65,536
+
+    inodes per block
+    group                       8,192                       16,384                  32,768                  65,536
+
+    bytes per block group    8,388,608 (8MiB)           33,554,432 (32MiB)      134,217,728 (128MiB)    536,870,912(512MiB)
+
+    file system size (real)  4,398,046,509,056          8,796,093,018,112       17,592,186,036,224      35,184,372,080,640
+                                                                                                            (32TiB)
+                                                                                    (16TiB)                     
+                                                            (8TiB)
+                                (4TiB)
+
+
+
+    file system size        2,199,023,254,528           8,796,093,018,112       17,592,186,036,224      35,184,372,080,640
+                                                                                                            (32TiB)
+                                                                                    (16TiB)
+                                                            (8TiB)
+                                (2TiB) 
+
+
+
+    blocks per file         16,843,020                  134,217,728             1,074,791,436           8,594,130,956
+
+    file size (real)        17,247,252,480              274,877,906,944         2,199,023,255,552       2,199,023,255,552
+                                                                                                        (2TiB)
+                                                                                (2TiB)
+                                                        (256GiB)
+                            (16GiB)
+
+
+
+    file size               17,247,252,480              274,877,906,944         2,199,023,255,552       2,199,023,255,552
+                                                                                                        (2TiB)
+                                                                                (2TiB)
+                                                        (256GiB)
+                            (16GiB)
+
+
+
+

@@ -1,0 +1,68 @@
+## fsck in linux
+
+fsck is used to check and optionally repair one or more linux fsck
+filesystems, file sys can be a device name
+( e.g 
+
+/dev/sda1,/dev/sdb1
+)
+
+or a mount point
+(
+    e.g. /, /usr , /home
+
+)
+fsck is similar to the chkdsk 
+most of the times it runs during boot times
+
+## can be used with three modes of operation
+
+1.check for errors and let the user decide what should be done with each errors
+2.check for errors and make repairs automatically,
+3.check for errors and display the error but does not perform any repair
+
+## fsck (filesystem check)
+
+to run fsck on the filesystem
+
+#fsck <options> <filesystem>
+#fsck <options> <Mountpoint dir>
+
+the options can be used with the fsck command::
+
+-p automatic repair (no questions)
+-y assume yes to all questions
+-c check for bad blocks and add them to the badblock list
+-f force checking even if filesystem is marked clean
+-v be verbose 
+-b superblock use alternate superblock
+
+procedure to run fsck on the filesystem
+
+1.the filesystem should be in inactive state
+2.if the filesystem is in active state, unmount it 
+3.now run fsck on the filesystem
+
+## how to actually run it 
+
+df -h 
+umount /dev/sda2 
+fsck /dev/sda2 
+
+echo $? -> to check the previously executed program is success or failure
+     $? = inbuilt special variable 
+if it returns
+
+0 No errors
+1 - Filesystem errors corrected
+2- System should be rebooted
+4 - Filesystem errors left uncorrected
+8 - Operational error
+16- Usage or syntax error
+32 - Fsck canceled by user request
+128 - Shared-library error
+
+
+
+
+

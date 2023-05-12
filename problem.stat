@@ -1,0 +1,15 @@
+Userland project: mkfs, fsck
+
+Implement the 'fsck' and 'mkfs' utility for ext2 file system .
+
+Doing 'mkfs' is easy as all it does is writes to the partition, at appropriate locations, appropriate data to initialize (format) the file system. 'fsck' is complex as it requires building the file system data structures and checking if the namespace tree/acyclic-graph is consistent.
+
+Distribution of marks:
+
+Basic mkfs: 15 marks
+
+Mkfs options -b, -g -L : 5 marks
+
+Basic fsck: 25 marks
+
+fsck options: -y, -n, -f, -c : 5marks

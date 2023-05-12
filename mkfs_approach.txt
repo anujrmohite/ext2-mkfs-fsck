@@ -1,0 +1,40 @@
+1. Parse command-line arguments: 
+
+Parse the input arguments, such as the device to format and optional parameters like block size, inode size, etc.
+
+2. Open the device:
+
+Open the device file (e.g., /dev/sda1) for reading and writing.
+
+3. Create and initialise the superblock: 
+
+Create an instance of the ext2_super_block structure and fill in the appropriate values for the file system you are creating, such as the total number of inodes, blocks, etc.
+
+4. Write the superblock to the device: 
+
+Write the initialised superblock to the device at the appropriate location (usually the second block).
+
+5. Create and initialise the block group descriptor table: 
+
+Create an instance of the ext2_group_desc structure for each block group in the file system and fill in the appropriate values, such as the location of the block bitmap, inode bitmap, and inode table.
+
+6. Write the block group descriptor table to the device: 
+
+Write the initialised block group descriptor table to the device at the appropriate location (usually the third block).
+
+7. Create and initialise the block and inode bitmaps:
+
+For each block group, create and initialise the block and inode bitmaps. Write the bitmaps to the device at the locations specified in the block group descriptor.
+
+8. Create and initialise the inode tables:** suggestations;
+
+For each block group, create and initialise the inode table. Write the inode table to the device at the location specified in the block group descriptor.
+
+9. Create the root directory: 
+
+Create the root directory with the necessary entries (e.g., ".", ".."). Update the inode table and block bitmap accordingly.
+
+10. Close the device:
+
+Close the device file after all the necessary data has been written.
+
